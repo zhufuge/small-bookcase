@@ -1,0 +1,14 @@
+#+TITLE: small-bookcase
+#+AUTHOR: zhufuge
+#+DATE: <2017-01-17 周二 00:30>
+
+* 技术栈
+  服务器：node.js + express
+  前端：bootstrap + jquery
+  数据库：mysql
+
+* 运行
+  windows：
+  #+BEGIN_SRC sh
+    set DEBUG=s-bc:* & npm start
+  #+END_SRC
