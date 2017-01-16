@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="stylesheet/bootstrap.min.css" rel="stylesheet" />
+    <link href="stylesheet/book.css" rel="stylesheet" />
+
+    <title>
+      <%=name %>-小书箱</title>
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="navbar navbar-default navbar-fixed-top navbar-custom" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	            <span class="sr-only">Toggle navigation</span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+            <a class="navbar-brand" href="browse.html">小书箱</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a href="signin.html">
+                  <%=cus_id %><span class="caret"></span>
+                </a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <%=cus_id %><span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="custom.html?user=<%=cus_id%>">我的订单</a></li>
+                  <li><a href="signin.html">退出</a></li>
+                </ul>
+              </li>
+              <li><a href="doc.html">About</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <section id="main">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5">
+            <img class="img img-thumbnail" alt="无封面" src="image/<%=image %>">
+          </div>
+
+          <div class="col-md-7">
+            <div class="info">
+              <h1 class="name"><%=name %></h1>
+              <p class="descript">
+                <%=descript %>
+              </p>
+              <hr/>
+              <div class="more-info">
+                <p class="author">作者:
+                  <%=author %>
+                </p>
+                <p class="sup">出版社:
+                  <%=sup %>
+                </p>
+              </div>
+              <div class="price">
+                原价：
+                <p>¥
+                  <%=price %>
+                </p>
+              </div>
+            </div>
+
+            <div class="more-info">
+              <p>销量：
+                <%=sales_quan %>
+              </p>
+              <p>库存：
+                <%=quantity %>
+              </p>
+            </div>
+
+            <hr/>
+
+            <form action="" method="post">
+              <div class="input-group input-group-lg">
+                <span class="input-group-addon">件数：</span>
+                <input type="number" class="form-control" name="quan" id="quan" value="1" min="1" required>
+              </div>
+              <br/>
+              <button type="submit" class="btn btn-primary btn-lg btn-block">立即购买</button>
+            </form>
+            <div class="alert alert-error alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <strong>购买前请先登录!</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- jQuery -->
+      <script src="javascripts/jquery-2.2.2.min.js"></script>
+      <!-- bootstrap -->
+      <script src="javascripts/bootstrap.min.js"></script>
+
+      <script src="javascripts/book.js"></script>
+  </body>
+
+</html>

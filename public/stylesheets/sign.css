@@ -1,0 +1,55 @@
+body {
+  background: url("../images/background.jpeg") fixed center;
+}
+
+p {
+  margin: 18px 0;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  text-decoration: none;
+  color: gray;
+}
+
+#main {
+  padding: 20px 40px 40px;
+  margin: 50px auto;
+  max-width: 800px;
+
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+}
+
+#main h1 {
+  font-size: 56px;
+  font-weight: 200;
+  line-height: 1em;
+  margin-bottom: 0;
+}
+
+#main h2 {
+  font-size: 30px;
+  font-weight: 200;
+}
+
+#main h4 {
+  align-content: center;
+}
+
+#sign {
+  padding: 0 30px;
+}
+
+.sign-nav {
+  font-size: 20px;
+  text-align: center;
+}
+
+a.active {
+  color: #3071A9;
+}
+
