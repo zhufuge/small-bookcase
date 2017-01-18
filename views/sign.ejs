@@ -14,7 +14,7 @@
   <body>
     <section id="main" class="container-fluid">
       <div class="row">
-        <a href="browse.html">
+        <a href="/">
           <h1>小书箱</h1>
         </a>
         <h2>一个超迷你网上书店</h2>
@@ -34,13 +34,37 @@
 
         <div id="sign" class="col-md-6">
           <div class="sign-nav">
-            <a class="" href="signin.html">登录</a>
+            <a class="signin_ active" href="#signin">登录</a>
             <span>·</span>
-            <a class="active" href="signup.html">注册</a>
+            <a class="signup_" href="#signup">注册</a>
           </div>
 
+          <div class="signin">
+            <form action="sign" method="post">
+              <div class="form-group">
+                <label for="username">用户名</label>
+                <input class="form-control" type="text" name="username"
+                       id="username" placeholder="Username" required>
+              </div>
+              <div class="form-group">
+                <label for="password">密码</label>
+                <input class="form-control" type="password" name="password"
+                       id="password" placeholder="Password" required>
+              </div>
+              <br/>
+              <input type="hidden" name="sign" value="in">
+              <button class="btn btn-primary btn-block btn-lg" type="submit">登录</button>
+            </form>
+
+            <div class="alert alert-error alert-dismissible" role="alert">
+  	          <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <strong>用户名或密码错误!</strong>
+	          </div>
+          </div>
+
+
           <div class="signup">
-            <form action="" method="post">
+            <form action="sign" method="post">
               <div class="form-group">
                 <label for="name">用户名</label>
                 <input class="form-control" type="text" name="name" id="name"
@@ -48,19 +72,20 @@
               </div>
               <div class="form-group">
                 <label for="password">密码</label>
-                <input class="form-control" type="password" name="password" id="password"
-                       placeholder="Password" required>
+                <input class="form-control" type="password" name="password"
+                       id="password" placeholder="Password" required>
               </div>
               <div class="form-group">
                 <label for="connect-way">联系方式</label>
-                <input class="form-control" type="text" name="connect-way" id="connect-way"
-                       placeholder="Phone: 188xxxxxxxx" required>
+                <input class="form-control" type="text" name="connect-way"
+                       id="connect-way" placeholder="Phone" required>
               </div>
               <div class="form-group">
                 <label for="connect-addr">地址</label>
-                <input class="form-control" type="text" name="connect-addr" id="connect-addr"
-                       placeholder="安徽 宣城 xxx" required>
+                <input class="form-control" type="text" name="connect-addr"
+                       id="connect-addr" placeholder="Address" required>
               </div>
+              <input type="hidden" name="sign" value="in">
               <button class="btn btn-primary btn-block btn-lg" type="submit">注册</button>
             </form>
             <div class="alert alert-error alert-dismissible" role="alert">
@@ -77,5 +102,7 @@
     <script src="javascripts/jquery-2.2.2.min.js"></script>
     <!-- bootstrap -->
     <script src="javascripts/bootstrap.min.js"></script>
+
+    <script src="javascripts/sign.js"></script>
   </body>
 </html>
