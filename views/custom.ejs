@@ -29,10 +29,10 @@
 	          <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
 	      		    <a href="signin.html">
-                  <%=cus_id %><span class="caret"></span>
+                  {{cus_id }}<span class="caret"></span>
                 </a>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-  	              <%=cus_id %><span class="caret"></span>
+  	              {{cus_id }}<span class="caret"></span>
     	          </a>
         	      <ul class="dropdown-menu" role="menu">
                   <li><a href="">我的订单</a></li>
@@ -48,9 +48,9 @@
     <section id="main">
       <div class="info">
         <ul class="list-group">
-          <li class="list-group-item list-group-item-success">用户名：<%=cus_id %></li>
-          <li class="list-group-item list-group-item-info">联系方式：<%=way %></li>
-          <li class="list-group-item list-group-item-warning">地址：<%=addr %></li>
+          <li class="list-group-item list-group-item-success">用户名：{{cus_id }}</li>
+          <li class="list-group-item list-group-item-info">联系方式：{{way }}</li>
+          <li class="list-group-item list-group-item-warning">地址：{{addr }}</li>
         </ul>
       </div>
 
@@ -69,21 +69,21 @@
 
       <div class="order">
         <ul class="list-group">
-          <li class="list-group-item list-group-item-info">订单号：<%=order_id %></li>
-          <li class="list-group-item">书名：<%=book_name %> / 数量：<%=book_quan %></li>
-          <li class="list-group-item">买家名称：<%=cus_id %></li>
-          <li class="list-group-item">买家地址：<%=addr %> / 联系方式：<%=way %></li>
-          <li class="list-group-item">下单时间：<%=order_time %></li>
+          <li class="list-group-item list-group-item-info">订单号：{{order_id }}</li>
+          <li class="list-group-item">书名：{{book_name }} / 数量：{{book_quan }}</li>
+          <li class="list-group-item">买家名称：{{cus_id }}</li>
+          <li class="list-group-item">买家地址：{{addr }} / 联系方式：{{way }}</li>
+          <li class="list-group-item">下单时间：{{order_time }}</li>
         </ul>
       </div>
 
       <div class="deliver">
         <ul class="list-group">
-          <li class="list-group-item list-group-item-info">发货代号：<%=deli_id %> / 订单号：<%=deli_o_id %></li>
-          <li class="list-group-item">书名：<%=book_name %> / 数量：<%=deli_b_quan %></li>
-          <li class="list-group-item">买家名称：<%=deli_cus_id %> / 地址：<%=cus_addr %> / 联系方式：<%=cus_way %></li>
-          <li class="list-group-item">下单时间：<%=deli_o_time %></li>
-          <li class="list-group-item">发货人：<%=deli_admin %> / 发货时间：<%=deli_time %></li>
+          <li class="list-group-item list-group-item-info">发货代号：{{deli_id }} / 订单号：{{deli_o_id }}</li>
+          <li class="list-group-item">书名：{{book_name }} / 数量：{{deli_b_quan }}</li>
+          <li class="list-group-item">买家名称：{{deli_cus_id }} / 地址：{{cus_addr }} / 联系方式：{{cus_way }}</li>
+          <li class="list-group-item">下单时间：{{deli_o_time }}</li>
+          <li class="list-group-item">发货人：{{deli_admin }} / 发货时间：{{deli_time }}</li>
         </ul>
       </div>
 

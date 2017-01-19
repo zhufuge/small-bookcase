@@ -10,7 +10,10 @@ var connection = mysql.createConnection({
 
 var sql = {
   qyCategory: 'select id, name from category',
-  qyBooks: 'select id, name, price, author, descript, cate_id, image from book'
+  qyBooks: 'select id, name, price, author, descript, cate_id, image from book',
+  qyUser: 'select id from bc_user where id=? and pwd=?',
+  insertUser: 'insert into bc_user(id,pwd,identity) values(?,?,?)',
+  updateCustomer: 'update customer set name=?,contact=?,addr=? where id=?'
 };
 
 
@@ -38,3 +41,49 @@ exports.queryBooks = function (callback) {
     directBack(callback)
   );
 };
+
+exports.checkUser = function (user, callback) {
+  connection.query(
+    sql.qyUser,
+    user,
+    function(err, rows) {
+      if (err) throw err;
+      callback(rows.length);
+    }
+  );
+};
+
+exports.insertUser = function (user, callback) {
+  var insert = [
+    user[0],
+    user[1],
+    '0'
+  ];
+  connection.query(
+    sql.insertUser,
+    insert,
+    function(err, rows) {
+      if (err) {
+        callback(false);
+      }
+      updateCustomer(user, callback);
+    }
+  );
+};
+
+function updateCustomer(user, callback) {
+  var update = [
+    user[0],
+    user[2],
+    user[3],
+    user[0]
+  ];
+  connection.query(
+    sql.updateCustomer,
+    update,
+    function(err, rows) {
+      if (err) throw err;
+      callback(true);
+    }
+  );
+}
