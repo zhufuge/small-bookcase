@@ -2,27 +2,31 @@ var express = require('express');
 var router = express.Router();
 var db = require('../db/mysql');
 
-// render Data
-var renderData = {
+var cateAndBooks = {
   cates: {},
   books: {}
 };
 
-// index router
+var bookInfo = {};
+
 router
-  .use('/', queryCategory())
+  .use('/', queryCategories())
   .use('/', queryBooks())
   .get('/', function(req, res, next) {
-    res.render('index', renderData);
+    res.render('index', cateAndBooks);
   });
 
-router.get('/sign', function(req, res, next) {
-  res.render('sign');
-});
+router
+  .get('/sign', function(req, res, next) {
+    res.render('sign');
+  });
 
-router.get('/book', function(req, res, next) {
-  res.render('book');
-});
+router
+  .use('/book', queryBookInfo())
+  .use('/book', querySup())
+  .get('/book', function(req, res, next) {
+    res.render('book', bookInfo);
+  });
 
 router.get('/admin', function(req, res, next) {
   res.render('admin');
@@ -30,16 +34,15 @@ router.get('/admin', function(req, res, next) {
 
 router.get('/custom', function(req, res, next) {
   res.render('custom');
-})
+});
 
-// sign post
 router
   .post('/sign', sign_in())
   .post('/sign', sign_up());
 
-function queryCategory() {
+function queryCategories() {
   return function(req, res, next) {
-    db.queryCategory(function(data) {
+    db.queryCategories(function(data) {
       var cates = {
         show: 4,
         id: [],
@@ -50,7 +53,7 @@ function queryCategory() {
         cates.id.push(data[i].id);
         cates.name.push(data[i].name);
       }
-      renderData.cates = cates;
+      cateAndBooks.cates = cates;
 
       next();
     });
@@ -80,7 +83,7 @@ function queryBooks() {
         books.image.push(data[i].image);
       }
 
-      renderData.books = books;
+      cateAndBooks.books = books;
       next();
     });
   };
@@ -122,6 +125,29 @@ function sign_up() {
     }
   };
 }
+
+function queryBookInfo() {
+  return function(req, res, next) {
+    db.queryBookInfo([req.query.book], function(data) {
+      if (data.length) {
+        bookInfo = data[0];
+      }
+      next();
+    });
+  };
+}
+
+function querySup() {
+  return function(req, res, next) {
+    db.querySup([bookInfo.sup_id], function(data) {
+      if (data.length) {
+        bookInfo.sup = data[0].name;
+      }
+      next();
+    });
+  };
+}
+
 
 
 module.exports = router;
