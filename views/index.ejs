@@ -142,7 +142,7 @@
 
             <% for (var i in books.id) { %>
               <div class="book-item col-md-6" in_cate="<%= books.cate[i] %>">
-                <a class="book-img-a" href="book?<%= books.id[i] %>">
+                <a class="book-img-a" href="book?book=<%= books.id[i] %>">
                   <img  class="img-thumbnail book-img" alt="无封面" src="images/<%= books.image[i] %>"/>
                 </a>
                 <a href="book?book=<%= books.id[i] %>">

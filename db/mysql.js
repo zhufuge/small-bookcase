@@ -9,8 +9,10 @@ var connection = mysql.createConnection({
 });
 
 var sql = {
-  qyCategory: 'select id, name from category',
+  qyCategories: 'select id, name from category',
   qyBooks: 'select id, name, price, author, descript, cate_id, image from book',
+  qyBookById: 'select * from book where id=?',
+  qySup: 'select name from supplier where id=?',
   qyUser: 'select id from bc_user where id=? and pwd=?',
   insertUser: 'insert into bc_user(id,pwd,identity) values(?,?,?)',
   updateCustomer: 'update customer set name=?,contact=?,addr=? where id=?'
@@ -26,15 +28,13 @@ function directBack(callback) {
   };
 }
 
-// query book category info
-exports.queryCategory = function (callback) {
+exports.queryCategories = function (callback) {
   connection.query(
-    sql.qyCategory,
+    sql.qyCategories,
     directBack(callback)
   );
 };
 
-// query book info
 exports.queryBooks = function (callback) {
   connection.query(
     sql.qyBooks,
@@ -68,6 +68,22 @@ exports.insertUser = function (user, callback) {
       }
       updateCustomer(user, callback);
     }
+  );
+};
+
+exports.queryBookInfo = function (book_id, callback) {
+  connection.query(
+    sql.qyBookById,
+    book_id,
+    directBack(callback)
+  );
+};
+
+exports.querySup = function (sup_id, callback) {
+  connection.query(
+    sql.qySup,
+    sup_id,
+    directBack(callback)
   );
 };
 
