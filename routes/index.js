@@ -19,7 +19,9 @@ router
 router
   .get('/sign', function(req, res, next) {
     res.render('sign');
-  });
+  })
+  .post('/sign', sign_in())
+  .post('/sign', sign_up());
 
 router
   .use('/book', queryBookInfo())
@@ -29,16 +31,13 @@ router
   });
 
 router.get('/admin', function(req, res, next) {
-  res.render('admin');
+  res.render('admin', {username: req.body.username});
 });
 
 router.get('/custom', function(req, res, next) {
   res.render('custom');
 });
 
-router
-  .post('/sign', sign_in())
-  .post('/sign', sign_up());
 
 function queryCategories() {
   return function(req, res, next) {
@@ -96,9 +95,13 @@ function sign_in() {
         req.body.username,
         req.body.password
       ];
-      db.checkUser(user, function(pass){
+      db.checkUser(user, function(pass, data){
         if (pass) {
-          res.redirect('/');
+          if (data[0].identity == '1') {
+            res.redirect('/admin');
+          } else {
+            res.redirect('/');
+          }
         } else {
           res.redirect('/sign');
         }
