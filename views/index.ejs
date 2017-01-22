@@ -12,41 +12,7 @@
 
   <body>
 
-	  <header>
-	    <nav class="navbar navbar-default navbar-fixed-top navbar-custom" role="navigation">
-	      <div class="container">
-	        <div class="navbar-header">
-	          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-	            <span class="sr-only">Toggle navigation</span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	          </button>
-	          <a class="navbar-brand" href="">小书箱</a>
-	        </div>
-	        <div id="navbar" class="navbar-collapse collapse"
-               aria-expanded="false" style="height: 0.8px;">
-	          <ul class="nav navbar-nav navbar-right">
-              <li class="dropdown">
-	      		    <a href="sign">
-                  {cus_id}<span class="caret"></span>
-                </a>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                   aria-expanded="false">
-  	              {cus_id}<span class="caret"></span>
-    	          </a>
-        	      <ul class="dropdown-menu" role="menu">
-                  <li><a href="custom">我的订单</a></li>
-                  <li><a href="sign">退出</a></li>
-                </ul>
-              </li>
-              <li><a href="">About</a></li>
-            </ul>
-	        </div>
-	      </div>
-	    </nav>
-	  </header>
+    <% include header.ejs %>
 
     <section id="main">
       <div class="head-descript">
@@ -61,10 +27,10 @@
           <li role="presentation" class="active" cate="0">
             <a class="cate" href="#">全部</a></li>
 
-          <% for (var i in cates.id) { %>
+          <% for (var i in cates) { %>
             <% if (i < cates.show) { %>
-              <li role="presentation" cate="<%= cates.id[i] %>">
-                <a class="cate" href="#<%= cates.name[i] %>"><%= cates.name[i] %></a></li>
+              <li role="presentation" cate="<%= cates[i].id %>">
+                <a class="cate" href="#<%= cates[i].name %>"><%= cates[i].name %></a></li>
             <% } else { %>
                 <% if (i == cates.show) { %>
                   <li role="presentation" class="dropdown">
@@ -73,9 +39,9 @@
                     </a>
                     <ul class="dropdown-menu" role="menu">
                 <% } %>
-                <li role="presentation" cate="<%= cates.id[i] %>">
-                  <a class="cate" href="#<%= cates.name[i] %>"><%= cates.name[i] %></a></li>
-                <% if (i == cates.id.length) {%>
+                <li role="presentation" cate="<%= cates[i].id %>">
+                  <a class="cate" href="#<%= cates[i].name %>"><%= cates[i].name %></a></li>
+                <% if (i == cates.length) {%>
                     </ul>
                   </li>
                 <% } %>
@@ -140,17 +106,18 @@
         <div class="container-fluid">
           <div class="row">
 
-            <% for (var i in books.id) { %>
-              <div class="book-item col-md-6" in_cate="<%= books.cate[i] %>">
-                <a class="book-img-a" href="book?book=<%= books.id[i] %>">
-                  <img  class="img-thumbnail book-img" alt="无封面" src="images/<%= books.image[i] %>"/>
+            <% for (var i in books) { %>
+              <div class="book-item col-md-6" in_cate="<%= books[i].cate_id %>">
+                <a class="book-img-a" href="book?book=<%= books[i].id %>">
+                  <img  class="img-thumbnail book-img" alt="无封面"
+                        src="images/<%= books[i].image %>"/>
                 </a>
-                <a href="book?book=<%= books.id[i] %>">
-                  <p class="name"><%= books.name[i] %></p>
+                <a href="book?book=<%= books[i].id %>">
+                  <p class="name"><%= books[i].name %></p>
                 </a>
-                <p class="price">￥<%= books.price[i] %></p>
-                <p class="author"><%= books.author[i] %></p>
-                <p class="descript"><%= books.descript[i] %></p>
+                <p class="price">￥<%= books[i].price %></p>
+                <p class="author"><%= books[i].author %></p>
+                <p class="descript"><%= books[i].descript %></p>
                 <hr/>
               </div>
             <% } %>
@@ -160,9 +127,7 @@
       </div>
     </section>
 
-    <footer>
-
-    </footer>
+    <footer></footer>
 
     <!-- jQuery -->
     <script src="javascripts/jquery-2.2.2.min.js"></script>

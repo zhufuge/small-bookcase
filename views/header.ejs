@@ -1,0 +1,40 @@
+<header>
+  <nav class="navbar navbar-default navbar-fixed-top navbar-custom"
+       role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed"
+                data-toggle="collapse" data-target="#navbar"
+                aria-expanded="false" aria-controls="navbar">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+        <a class="navbar-brand" href="/">小书箱</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse" aria-expanded="false"
+           style="height: 0.8px;">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <% if (username === undefined) { %>
+	      		  <a href="sign">
+                未登录<span class="caret"></span>
+              </a>
+            <% } else { %>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                 aria-expanded="false">
+  	            <%= username %><span class="caret"></span>
+    	        </a>
+            <% } %>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="custom">我的订单</a></li>
+              <li><a href="sign">退出</a></li>
+            </ul>
+          </li>
+          <li><a href="">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

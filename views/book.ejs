@@ -14,43 +14,7 @@
 
   <body>
 
-    <header>
-      <nav class="navbar navbar-default navbar-fixed-top navbar-custom"
-           role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed"
-                    data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-	            <span class="sr-only">Toggle navigation</span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	          </button>
-            <a class="navbar-brand" href="/">小书箱</a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse" aria-expanded="false"
-               style="height: 0.8px;">
-            <ul class="nav navbar-nav navbar-right">
-              <li class="dropdown">
-                <a href="sign">
-                  {{cus_id }}<span class="caret"></span>
-                </a>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                   aria-expanded="false">
-                  {{cus_id }}<span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="custom?user={{cus_id}}">我的订单</a></li>
-                  <li><a href="sign">退出</a></li>
-                </ul>
-              </li>
-              <li><a href="">About</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
+    <% include header.ejs %>
 
     <section id="main">
       <div class="container">
@@ -94,12 +58,14 @@
 
             <hr/>
 
-            <form action="" method="post">
+            <form action="/book" method="post">
               <div class="input-group input-group-lg">
                 <span class="input-group-addon">件数：</span>
-                <input type="number" class="form-control" name="quan" id="quan" value="1" min="1" required>
+                <input type="number" class="form-control" name="buy_quan" id="buy_quan" value="1" min="1" required>
               </div>
               <br/>
+              <input name="username" type="hidden" value="<%= username %>">
+              <input name="book_id" type="hidden" value="<%= id %>">
               <button type="submit" class="btn btn-primary btn-lg btn-block">立即购买</button>
             </form>
             <div class="alert alert-error alert-dismissible" role="alert">
