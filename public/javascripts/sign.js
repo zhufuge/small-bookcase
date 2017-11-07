@@ -3,9 +3,8 @@ $(document).ready(function(){
   var $up = $('.signup');
   var $in_ = $('.signin_');
   var $up_ = $('.signup_');
-  var $title = $('title');
 
-  $title.text('登录-小书箱');
+  document.title = '登录-小书箱';
   $in.show();
   $up.hide();
 
@@ -15,7 +14,7 @@ $(document).ready(function(){
 
     $up.hide();
     $in.show();
-    $title.text('登录-小书箱');
+    document.title = '登录-小书箱';
   });
 
   $up_.click(function(){
@@ -24,7 +23,7 @@ $(document).ready(function(){
 
     $in.hide();
     $up.show();
-    $title.text('注册-小书箱');
+    document.title = '注册-小书箱';
   });
 
 });

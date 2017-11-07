@@ -9,10 +9,10 @@ $(document).ready(function() {
     $img.attr('style', 'border-color: #3071A9');
 
     href = $(this).attr('href');
-    $name = $('a[href="' + href + '"]').find('p');
-    $name.attr('style', 'color: #3071A9;text-decoration: underline');
+    $name = $('a[href="' + href + '"]').find('p')
+      .attr('style', 'color: #3071A9;text-decoration: underline');
   }, function() {
-	$img.removeAttr('style');
+	  $img.removeAttr('style');
     $name.removeAttr('style');
   });
 

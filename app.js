@@ -1,44 +1,48 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const express = require('express')
+const path = require('path')
+const favicon = require('serve-favicon')
+const logger = require('morgan')
+const cookieParser = require('cookie-parser')
+const bodyParser = require('body-parser')
 
-var index = require('./routes/index');
+const router = require('./routes/index')
 
-var app = express();
+const app = express()
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+// 渲染引擎设置
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'ejs')
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// 小图标设置
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+// 日志设置
+app.use(logger('dev'))
+// 数据体解析
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(cookieParser())
+// 静态文件传输
+app.use(express.static(path.join(__dirname, 'public')))
 
-app.use('/', index);
+// 路由设置
+app.use('/', router)
 
-// catch 404 and forward to error handler
+// 404 并抛出错误
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
+  const err = new Error('Not Found')
+  err.status = 404
+  next(err)
+})
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+// 错误处理
+app.use(function(err, req, res) {
+  // 服务器错误记录
+  res.locals.message = err.message
+  res.locals.error = req.app.get('env') === 'development' ? err : {}
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+  // 生成错误页面
+  res.status(err.status || 500)
+  res.render('error')
+})
 
-module.exports = app;
+module.exports = app

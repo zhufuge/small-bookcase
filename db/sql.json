@@ -1,0 +1,16 @@
+{
+  "qyCategories": "SELECT id, name FROM category",
+  "qyBooks": "SELECT id, name, price, author, descript, cate_id, image FROM book",
+  "qyBookById": "SELECT * FROM book WHERE id=?",
+  "qySup": "SELECT name FROM supplier WHERE id=?",
+  "qyUser": "SELECT identity FROM bc_user WHERE id=? AND pwd=?",
+  "insertUser": "INSERT INTO bc_user(id,pwd,identity) VALUES(?,?,?)",
+  "updateCustomer": "UPDATE customer SET name=?,contact=?,addr=? WHERE id=?",
+  "addOrder": "INSERT INTO order_form(id, b_id, b_quan, cus_id) VALUES(?,?,?,?)",
+  "qyCustom": "SELECT * FROM customer WHERE id=?",
+  "qyOrderById": "SELECT o.id,b.name book_name,o.b_quan,o.o_time FROM order_form AS o,book AS b WHERE o.b_id=b.id AND o.cus_id=?",
+  "qyDeliById": "SELECT d.id,d.o_id,d.o_time,b.name book_name,d.b_quan,d.admin_id,d.d_time FROM deliver AS d, book AS b WHERE d.b_id=b.id AND d.cus_id=?",
+  "qyAdmin": "SELECT * FROM admin WHERE id=?",
+  "qyOrders": "SELECT o.id,b.name book_name,o.b_quan,o.o_time,c.id cus_id,c.contact,c.addr FROM order_form AS o,book AS b,customer AS c WHERE o.b_id=b.id AND o.cus_id=c.id",
+  "qyDelis": "SELECT d.id, d.o_id, d.o_time, b.name book_name,d.b_quan, d.admin_id, d.d_time, c.id cus_id, c.contact,c.addr FROM deliver AS d, book AS b, customer AS c WHERE d.b_id = b.id AND d.cus_id = c.id"
+}

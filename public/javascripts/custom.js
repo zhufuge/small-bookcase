@@ -1,40 +1,43 @@
 $(document).ready(function() {
 
-  function set_badge(badge) {
+  function setBadge(badge) {
     var num = $(badge).children().length;
     if (num !== 0) {
       $(badge + '-badge').text(num);
     }
   }
 
-  function change(tab) {
+  function changeTab(index, tab) {
     var $tab = $(tab + '-badge').parent();
 
     $tab.click(function() {
       $('li[role="presentation"][class="active"]').removeClass("active");
       $(this).parent().addClass("active");
 
-      $(order).hide();
-      $(deliver).hide();
-      $(finish).hide();
-
-      $(tab).show();
+      justShowTab(index);
     });
   }
 
-  var order = ".order";
-  var deliver = ".deliver";
-  var finish = ".finish";
+  function justShowTab(index) {
+    $.each(affairs, function(i, v) {
+      if (index === i) {
+        $(v).show();
+      } else {
+        $(v).hide();
+      }
+    });
+  }
 
-  $(deliver).hide();
-  $(finish).hide();
+  var affairs = [
+    '.order',
+    '.deliver',
+    '.finish'
+  ];
 
-	set_badge(order);
-	set_badge(deliver);
-	set_badge(finish);
+  justShowTab(0);
 
-  change(order);
-  change(deliver);
-  change(finish);
-
+  $.each(affairs, function(i, v) {
+    setBadge(v);
+    changeTab(i, v);
+  });
 });
