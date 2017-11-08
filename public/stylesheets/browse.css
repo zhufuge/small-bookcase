@@ -9,7 +9,7 @@
   background-color: rgba(255, 255, 255, 0.98);
   box-shadow: 0 0 10px rgba(14, 14, 14, .26);
   height: 55px;
-  border-top: 3px solid #00bfff;
+  border-top: 3px solid #FF5722;
 }
 
 .navbar-custom .container {
@@ -25,16 +25,10 @@
   color: black !important;
 }
 
-#main {
-  margin: 60px auto 0px;
-  max-width: 1000px;
-  min-height: 1200px;
-}
-
 .head-descript {
   margin: 5px auto;
-  height: 200px;
-  background: url("../images/head.jpg");
+  height: 250px;
+  background: url("../images/p-0.jpg");
   color: white;
   text-align: center;
 }
@@ -47,8 +41,14 @@
 	padding: 80px 0 0 0;
 }
 
+#main {
+  margin: 32px auto 0px;
+  max-width: 1000px;
+  min-height: 1200px;
+}
+
 .category {
-  border-bottom:  3px solid #3071A9;
+  border-bottom:  3px solid #FFB300;
   font-size: 18px;
 }
 
@@ -56,7 +56,19 @@
   text-align: center;
   padding: 11px 24px;
   color: white;
-  background-color: #3071A9;
+  background-color: #FFB300;
+}
+
+.category a {
+  color: #FFB300;
+}
+
+.category a:hover {
+  color: #F57F27;
+}
+
+.nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
+  border-color: #FFB300;
 }
 
 .query {
@@ -68,7 +80,7 @@
 }
 
 .query .container-fluid .collapse{
-		padding-left: 0;
+	padding-left: 0;
 }
 
 .book-group {
@@ -118,13 +130,13 @@
 }
 
 .name {
-  font-size: 14px;
+  font-size: 21px;
   font-weight: bold;
   color: black;
 }
 
 .name:hover {
-  color: #3071A9;
+  color: #FFAB00;
   text-decoration: underline;
 }
 
@@ -135,7 +147,7 @@
 	top: 46px;
 	color: #c30;
 	font-family: "arial";
-	font-size: 14px;
+	font-size: 18px;
   font-weight: bold;
 }
 
@@ -144,7 +156,7 @@
 	line-height: 24px;
 	top: 70px;
 	font-family: "arial";
-	font-size: 14px;
+	font-size: 16px;
 }
 
 .descript {
@@ -152,7 +164,7 @@
 	line-height: 24px;
 	top: 94px;
 	font-family: "arial";
-	font-size: 14px;
+	font-size: 15px;
   word-break: break-all;
   word-wrap: break-word;
   color: #666;
@@ -160,5 +172,5 @@
 
 footer {
   height: 240px;
-  background-color: gray;
+  background: bottom right url("../images/p-1.png");
 }

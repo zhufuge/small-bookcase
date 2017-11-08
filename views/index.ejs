@@ -14,12 +14,12 @@
 
     <% include header.ejs %>
 
-    <section id="main">
-      <div class="head-descript">
-		    <div class="head-descript-text">
-		    </div>
-      </div>
+    <div class="head-descript">
+		  <div class="head-descript-text">
+		  </div>
+    </div>
 
+    <section id="main">
       <div class="category">
         <ul class="nav nav-tabs nav-justified" role="tablist">
           <li role="presentation">
@@ -30,7 +30,10 @@
           <% for (var i in cates) { %>
             <% if (i < cates.show) { %>
               <li role="presentation" cate="<%= cates[i].id %>">
-                <a class="cate" href="#<%= cates[i].name %>"><%= cates[i].name %></a></li>
+                <a class="cate" href="#<%= cates[i].name %>">
+                  <%= cates[i].name %>
+                </a>
+              </li>
             <% } else { %>
                 <% if (i == cates.show) { %>
                   <li role="presentation" class="dropdown">
@@ -40,7 +43,10 @@
                     <ul class="dropdown-menu" role="menu">
                 <% } %>
                 <li role="presentation" cate="<%= cates[i].id %>">
-                  <a class="cate" href="#<%= cates[i].name %>"><%= cates[i].name %></a></li>
+                  <a class="cate" href="#<%= cates[i].name %>">
+                    <%= cates[i].name %>
+                  </a>
+                </li>
                 <% if (i == cates.length) {%>
                     </ul>
                   </li>
@@ -63,7 +69,9 @@
             </button>
           </div>
 
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <div
+            class="collapse navbar-collapse"
+            id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
               <li class="active"><a href="#">默认排序</a></li>
               <li class="dropdown">

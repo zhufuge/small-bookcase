@@ -32,28 +32,18 @@
               </p>
               <hr/>
               <div class="more-info">
-                <p class="author">作者:
-                  <%= author %>
-                </p>
-                <p class="sup">出版社:
-                  <%= sup %>
-                </p>
+                <p class="author">作者: <%= author %></p>
+                <p class="sup">出版社: <%= sup %></p>
               </div>
               <div class="price">
                 原价：
-                <p>¥
-                  <%= price %>
-                </p>
+                <p>¥ <%= price %></p>
               </div>
             </div>
 
             <div class="more-info">
-              <p>销量：
-                <%= sales_quan %>
-              </p>
-              <p>库存：
-                <%= quantity %>
-              </p>
+              <p>销量：<%= sales_quan %></p>
+              <p>库存：<%= quantity %></p>
             </div>
 
             <hr/>
@@ -61,15 +51,21 @@
             <form action="/book" method="post">
               <div class="input-group input-group-lg">
                 <span class="input-group-addon">件数：</span>
-                <input type="number" class="form-control" name="buy_quan" id="buy_quan" value="1" min="1" required>
+                <input type="number" class="form-control"
+                  name="buy_quan" id="buy_quan" value="1" min="1" required>
               </div>
               <br/>
               <input name="username" type="hidden" value="<%= username %>">
               <input name="book_id" type="hidden" value="<%= id %>">
-              <button type="submit" class="btn btn-primary btn-lg btn-block">立即购买</button>
+              <button type="submit" class="btn btn-primary btn-lg btn-block">
+                立即购买
+              </button>
             </form>
             <div class="alert alert-error alert-dismissible" role="alert">
-              <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+              </button>
               <strong>购买前请先登录!</strong>
             </div>
           </div>

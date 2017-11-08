@@ -6,11 +6,11 @@ $(document).ready(function() {
   var href;
   $imga.hover(function() {
     $img = $(this).find('img');
-    $img.attr('style', 'border-color: #3071A9');
+    $img.attr('style', 'border-color: #FFB300');
 
     href = $(this).attr('href');
     $name = $('a[href="' + href + '"]').find('p')
-      .attr('style', 'color: #3071A9;text-decoration: underline');
+      .attr('style', 'color: #FFB300;text-decoration: underline');
   }, function() {
 	  $img.removeAttr('style');
     $name.removeAttr('style');
